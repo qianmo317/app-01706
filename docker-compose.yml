@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  frontend-user:
+    build:
+      context: ./frontend-user
+      dockerfile: Dockerfile
+    container_name: watermark-remover
+    ports:
+      - "8081:80"
+    restart: unless-stopped
