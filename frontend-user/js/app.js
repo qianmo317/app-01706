@@ -275,7 +275,7 @@ function updateBadges(index) {
 function runWorker(imgData, regions, algorithm) {
     return new Promise((resolve, reject) => {
         try {
-            const worker = new Worker('js/inpaint-worker.js');
+            const worker = new Worker(new URL('./inpaint-worker.js', import.meta.url));
             worker.onmessage = (e) => {
                 if (e.data.type === 'done') {
                     worker.terminate();
@@ -559,3 +559,14 @@ document.addEventListener('keydown', (e) => {
 document.getElementById('previewModal').addEventListener('click', (e) => {
     if (e.target.id === 'previewModal') closePreview();
 });
+
+window.processAllImages = processAllImages;
+window.downloadAll = downloadAll;
+window.exportToPDF = exportToPDF;
+window.clearAll = clearAll;
+window.previewImage = previewImage;
+window.processSingle = processSingle;
+window.downloadImage = downloadImage;
+window.clearRegions = clearRegions;
+window.deleteImage = deleteImage;
+window.closePreview = closePreview;
